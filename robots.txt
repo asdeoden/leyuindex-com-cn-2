@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://asdeoden.github.io/leyuindex-com-cn-2/sitemap.xml

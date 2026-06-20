@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时足球直播 | 不错过每一场精彩</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fce8b2 0%, #fbc76d 40%, #f9a825 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            color: #2c2c2c;
+            padding: 20px 16px;
+        }
+
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 白色卡片容器，柔和阴影 */
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px 28px;
+            box-shadow: 0 12px 30px rgba(180, 100, 10, 0.18);
+            transition: transform 0.2s ease;
+        }
+
+        /* hero 区域独立卡片 */
+        .hero-card {
+            margin-bottom: 28px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, #fffaf0);
+            padding: 40px 28px 32px;
+        }
+
+        .hero-card h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #b85e00, #e07c10);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 12px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: #5a3e1f;
+            max-width: 520px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+            padding: 0 4px;
+        }
+
+        .hero-highlight {
+            display: inline-block;
+            background: #f9a825;
+            padding: 8px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #2e1f06;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(180, 100, 10, 0.15);
+        }
+
+        /* 优势 / 特点网格 */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .feature-item {
+            background: #fefcf7;
+            border-radius: 24px;
+            padding: 24px 16px 20px;
+            border: 1px solid #f5e6d0;
+            transition: all 0.15s ease;
+        }
+
+        .feature-item:hover {
+            border-color: #e6c397;
+            box-shadow: 0 4px 12px rgba(200, 120, 30, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .feature-title {
+            font-weight: 650;
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+            color: #3f2b12;
+        }
+
+        .feature-desc {
+            font-size: 0.92rem;
+            color: #5c4a2e;
+        }
+
+        /* 说明区 + FAQ 摘要合并 */
+        .info-faq-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+
+        .info-block {
+            flex: 2 1 300px;
+            background: #fefcf9;
+            border-radius: 24px;
+            padding: 22px 20px;
+            border: 1px solid #f0dfc9;
+        }
+
+        .info-block h2,
+        .faq-mini h2 {
+            font-size: 1.3rem;
+            font-weight: 650;
+            border-left: 5px solid #f9a825;
+            padding-left: 14px;
+            margin-bottom: 14px;
+            color: #442f14;
+        }
+
+        .info-block p {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini {
+            flex: 1.5 1 240px;
+            background: #fefcf9;
+            border-radius: 24px;
+            padding: 22px 20px;
+            border: 1px solid #f0dfc9;
+        }
+
+        .faq-item {
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #eddcc9;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #3a2811;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: #5a4a32;
+            line-height: 1.5;
+        }
+
+        .faq-a a {
+            color: #b85e00;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            transition: color 0.15s;
+        }
+
+        .faq-a a:hover {
+            color: #e07c10;
+        }
+
+        /* 底部链接卡片 */
+        .footer-links {
+            background: #ffffffea;
+            border-radius: 26px;
+            padding: 24px 22px;
+            text-align: center;
+            border: 1px solid #f5e3cd;
+            backdrop-filter: blur(2px);
+        }
+
+        .footer-links p {
+            font-size: 0.95rem;
+            color: #4d3b22;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #b25600;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 40px;
+            padding: 6px 18px;
+            background: #fef1e0;
+            display: inline-block;
+            transition: all 0.15s;
+            border: 1px solid transparent;
+            margin: 0 4px;
+        }
+
+        .footer-links a:hover {
+            background: #fad7b0;
+            border-color: #d88d30;
+            color: #653d0e;
+        }
+
+        .footer-note {
+            margin-top: 14px;
+            font-size: 0.82rem;
+            color: #7c6749;
+        }
+
+        .inline-link {
+            color: #b25600;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: 0.1s;
+        }
+
+        .inline-link:hover {
+            color: #e07c10;
+        }
+
+        hr {
+            margin: 18px 0;
+            border: none;
+            border-top: 2px dashed #f5dbb6;
+            opacity: 0.5;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 580px) {
+            .hero-card h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 22px 16px;
+            }
+            .features-grid {
+                gap: 14px;
+            }
+            .info-faq-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- Hero 卡片 -->
+    <div class="card hero-card">
+        <h1>⚽ 每一脚都算数</h1>
+        <p class="hero-sub">从欧洲到南美，从五大联赛到杯赛之夜——<br>感受心跳与草皮同步的温度。</p>
+        <div class="hero-highlight">今日焦点 · 红蓝对决 · 直播中</div>
+    </div>
+
+    <!-- 优势区：三个核心特点 -->
+    <div class="features-grid">
+        <div class="feature-item">
+            <span class="feature-icon">📡</span>
+            <div class="feature-title">稳定信号</div>
+            <div class="feature-desc">多线路备份，降低卡顿焦虑。不管主场还是客场，画面始终流畅。</div>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">⏱️</span>
+            <div class="feature-title">即时赛况</div>
+            <div class="feature-desc">进球、换人、红黄牌同步提示，看球不必总盯着数据页。</div>
+        </div>
+        <div class="feature-item">
+            <span class="feature-icon">🌍</span>
+            <div class="feature-title">赛事覆盖</div>
+            <div class="feature-desc">英超、西甲、意甲、德甲、欧冠、亚冠……周末不愁没球看。</div>
+        </div>
+    </div>
+
+    <!-- 说明区 + FAQ 摘要（左右结构） -->
+    <div class="info-faq-section">
+        <div class="info-block">
+            <h2>关于看球这件事</h2>
+            <p>很多人喜欢深夜调低音量，就着一盏台灯看欧洲比赛。那种安静又专注的氛围，好像整座城市只剩下你和九十分钟的悬念。</p>
+            <p><a href="https://free-zuqiuzhibo.com" class="inline-link">足球直播</a> 不只是一串链接，它更像一扇窗——推开就能听见现场的风声、球迷的歌声和终场哨响的余韵。我们尽量让每扇窗都干净、明亮，没有多余弹窗打扰你的专注。</p>
+            <p>不管是通勤路上快速扫一眼比分，还是周末约朋友一起投屏看焦点战，这里都留了位置给你。</p>
+        </div>
+        <div class="faq-mini">
+            <h2>❓ 常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-q">需要下载软件吗？</div>
+                <div class="faq-a">不需要，打开浏览器即可。所有内容基于网页，移动端和电脑都可以直接使用。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">直播源稳定吗？</div>
+                <div class="faq-a">我们聚合了多个信号源，如果一条线路拥堵，可以手动切换备用线路。<a href="https://free-zuqiuzhibo.com">足球直播</a> 页面底部通常有线路选项。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">有回放或集锦吗？</div>
+                <div class="faq-a">主要提供实时直播，部分热门场次结束后会保留限时回放。具体以实际页面为准。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部链接卡片（自然嵌入多个链接） -->
+    <div class="footer-links">
+        <p>🏟️ 直接前往 <a href="https://free-zuqiuzhibo.com">足球直播</a>，选择你关注的联赛或球队。</p>
+        <p>⚡ 如果是深夜场次，建议提前调试设备，备好零食和水。</p>
+        <p>📱 移动端浏览器同样适配，随时随地感受比赛脉搏。</p>
+        <hr>
+        <div class="footer-note">
+            <span>© 2025 · 纯粹看球 · 不插广告</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

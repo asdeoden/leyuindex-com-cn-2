@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>九游娱乐 · 资料索引页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f5f0;
+      font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+      color: #2c2c2c;
+      line-height: 1.75;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      background: #fefcf8;
+      padding: 2.5rem 2.2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+    }
+
+    /* hero */
+    .hero {
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid #e5dfd5;
+      padding-bottom: 2rem;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #3e3a34;
+      margin-bottom: 0.6rem;
+    }
+    .hero .sub {
+      font-size: 1rem;
+      color: #7b756b;
+      border-left: 3px solid #b8a796;
+      padding-left: 1rem;
+      font-style: italic;
+      margin-top: 0.4rem;
+    }
+
+    /* 引用块 / 提示框 */
+    .notice-box {
+      background: #f3efe9;
+      padding: 1.2rem 1.6rem;
+      border-radius: 12px;
+      border-left: 5px solid #aa9c8a;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      color: #3d3a33;
+    }
+    .notice-box strong {
+      font-weight: 600;
+      color: #5f5546;
+    }
+
+    /* 通用段落 */
+    p {
+      margin-bottom: 1.2rem;
+      text-indent: 2em;
+      font-size: 1rem;
+    }
+    p.no-indent {
+      text-indent: 0;
+    }
+
+    /* 优势 / 特点卡片区 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 1.8rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+    .feature-item {
+      flex: 1 1 200px;
+      background: #f9f6f0;
+      padding: 1.2rem 1rem 1rem;
+      border-radius: 14px;
+      border: 1px solid #e3dcd2;
+    }
+    .feature-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #4c453b;
+      border-bottom: 1px dashed #d5ccc0;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.6rem;
+    }
+    .feature-item p {
+      font-size: 0.92rem;
+      text-indent: 0;
+      margin-bottom: 0;
+      color: #4a443c;
+    }
+
+    /* 说明区 (场景/整理角度) */
+    .insight-block {
+      background: #fffdf9;
+      border: 1px solid #e1d9ce;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0;
+    }
+    .insight-block h2 {
+      font-size: 1.4rem;
+      font-weight: 450;
+      color: #4a4238;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+    }
+    .insight-block ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+    .insight-block ul li {
+      padding: 0.4rem 0 0.4rem 1.6rem;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="%23918573"><circle cx="12" cy="12" r="4"/></svg>') left center no-repeat;
+      background-size: 10px;
+      margin-bottom: 0.3rem;
+      color: #3e3a33;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2.4rem 0 1.6rem;
+    }
+    .faq-summary details {
+      border-bottom: 1px solid #e1d9ce;
+      padding: 0.6rem 0;
+    }
+    .faq-summary details:first-of-type {
+      border-top: 1px solid #e1d9ce;
+    }
+    .faq-summary summary {
+      font-weight: 500;
+      cursor: default;
+      color: #3f3a32;
+      padding: 0.3rem 0;
+      font-size: 1rem;
+    }
+    .faq-summary summary::marker {
+      color: #9b8e7b;
+    }
+    .faq-summary p {
+      text-indent: 0;
+      margin: 0.5rem 0 0.8rem 1.2rem;
+      font-size: 0.93rem;
+      color: #4e4941;
+    }
+
+    /* 底部链接区 */
+    .footer-links {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e5dfd5;
+      font-size: 0.92rem;
+      color: #736c61;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .footer-links a {
+      color: #5a5144;
+      text-decoration: none;
+      border-bottom: 1px dotted #b8ab9a;
+      transition: border-color 0.2s;
+    }
+    .footer-links a:hover {
+      border-bottom: 1px solid #7f6f5b;
+    }
+    .footer-links .copy {
+      font-size: 0.85rem;
+      color: #8f877b;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem 1rem 2rem;
+      }
+      .container {
+        padding: 1.5rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .feature-grid {
+        flex-direction: column;
+      }
+      .footer-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero -->
+  <div class="hero">
+    <h1>九游娱乐 · 资料整理手记</h1>
+    <div class="sub">从碎片到脉络 —— 为兴趣搭建一份可查阅的索引</div>
+  </div>
+
+  <!-- 切入角度 / 说明 -->
+  <p>在日常翻阅与信息收集中，我们常常遇到有趣但零散的内容。如果能以温和的方式将它们归拢、标注、交叉对照，便能为后续的浏览省下不少精力。这份页面尝试以资料整理员的视角，围绕「<a href="https://pages-jiuyou.com" style="color:#5f5546; text-decoration: underline; text-underline-offset: 2px;">九游娱乐</a>」这个方向，梳理出几个常见的关注层面。它们并非定论，更像是一张可供参考的便签。</p>
+
+  <div class="notice-box">
+    <strong>✎ 整理说明</strong>：以下分类基于公开信息与通用兴趣点归纳，不含未公开来源。每个板块都保留了扩展空间，欢迎自行补充与调整。
+  </div>
+
+  <!-- 优势区 (特点卡片) -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h3>主题归类</h3>
+      <p>将相近的信息放在同一标签下，减少反复查找的损耗。比如玩法、活动、社区话题等都单独成组。</p>
+    </div>
+    <div class="feature-item">
+      <h3>时间线索</h3>
+      <p>按时间顺序排列关键节点，方便追溯变化脉络。从早期资料到近期动态，一目了然。</p>
+    </div>
+    <div class="feature-item">
+      <h3>交叉引用</h3>
+      <p>不同板块之间设置互相链接，避免信息孤立。一条记录可以同时关联多个分类。</p>
+    </div>
+  </div>
+
+  <!-- 说明区：从信息索引角度展开 -->
+  <div class="insight-block">
+    <h2>📂 索引框架示例</h2>
+    <ul>
+      <li><strong>基础档案</strong> —— 名称、平台、主要服务形态等不变信息。</li>
+      <li><strong>内容动态</strong> —— 版本更新、活动记录、媒体素材的收集存放。</li>
+      <li><strong>社群观察</strong> —— 讨论热点、用户反馈、常见问答的整理。</li>
+      <li><strong>外部参考</strong> —— 相关报道、评论、指南及第三方资料。</li>
+    </ul>
+    <p style="margin-top:1rem; text-indent:0; font-size:0.93rem; color:#5b5449;">每个大类下还可以设置子标签，比如「内容动态」分成「限时活动」「常驻玩法」和「视觉素材」。具体粒度由资料规模决定，灵活调整即可。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h2 style="font-size:1.2rem; font-weight:500; color:#4c453b; margin-bottom:0.8rem;">📌 常见疑问摘要</h2>
+
+    <details>
+      <summary>这些整理条目需要保持实时更新吗？</summary>
+      <p>看个人习惯。可以设定期检视（比如每两周或每月），也可以只在有较大变动时补充。不追求完美同步，重点是自己用着顺手。</p>
+    </details>
+    <details>
+      <summary>为什么选择从“资料索引”而不是“评测”入手？</summary>
+      <p>评测带有较多主观判断，而索引偏向中性的陈列与归类。对初期信息积累来说，索引更适合搭建认知框架，后续再决定是否加入评价。</p>
+    </details>
+    <details>
+      <summary>页面里提到的分类可以直接使用吗？</summary>
+      <p>完全可以当作起点，根据实际需要增加、合并或重命名。分类是工具，不是枷锁。</p>
+    </details>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-links">
+    <span>有关 <a href="https://pages-jiuyou.com">九游娱乐</a> 的更多背景与持续记录</span>
+    <span class="copy">资料整理 · 2025</span>
+  </div>
+
+</div>
+</body>
+</html>
